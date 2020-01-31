@@ -1,3 +1,4 @@
+//Calvin Varga
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -45,23 +46,23 @@ void freadnames(ifstream &f,char *list [])
 	char x[200];
 
 	int i = 0;
+	
+	while (f>>x){
+		list[i] = new char[strlen(x)+1]; 
+		strcpy(list[i],x);
+		i++;
+	}
 
-	// write a while loop to reads string form the file and put it in x till the end file
-		// inside the loop allocate the dynamic array for list[i]
-		// copy string in x to list[i] array
-		// increment i 
-
-	list[i] = nullptr;  // We put the null to the last pointer to mark that the last element in list
+	list[i] = nullptr;  // IMPORTANT: we put the null to the last pointer in list to mark the last element in list
 }
 void fwritenames_reverse(ofstream &f,char *list [])
 {
 	int i;
-	for(i = 0; list[i] != nullptr ; ++i)
-		;
+	for(i = 0; list[i] != nullptr ; ++i);
 
 	for(int j = i-1; j >= 0 ; --j)
 	{
-		// your code is here
+		f<<list[j]<< endl;
 	}
 }
 void freenames(char *list [])
@@ -71,7 +72,3 @@ void freenames(char *list [])
 		delete [] list[i];;
 	}
 }
-
-
-
-
